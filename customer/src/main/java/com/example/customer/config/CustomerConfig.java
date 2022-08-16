@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * 其他方式获取nacos的config
  * @Author liujiabin
  * @Date 2022/8/12 15:55
  */
