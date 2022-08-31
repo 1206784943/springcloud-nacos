@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @Author liujiabin
  * @Date 2022/8/29 16:14
  */
-@FeignClient(name = "provide",fallback = ProvideFailFeign.class)
+@FeignClient(name = "provide")
 public interface ProvideFeign {
 
     @GetMapping("/payment/nacos/{id}")
