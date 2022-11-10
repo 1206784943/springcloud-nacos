@@ -3,6 +3,7 @@ package com.example.customer.controller;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.example.customer.feign.ProvideFeign;
+import com.example.customer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,8 @@ public class CustomerController {
     private String name;
     @Resource
     private ProvideFeign provideFeign;
+    @Resource
+    private CustomerService customerService;
 
     @GetMapping("/configName")
     @SentinelResource(blockHandler = "getConfigBlock")
@@ -41,6 +44,13 @@ public class CustomerController {
     public String getProvideErrorData(@PathVariable Integer id) {
         String payment = provideFeign.getErrorPayment(id);
         return payment;
+    }
+
+    @GetMapping("/updateCustomer/{id}")
+    @SentinelResource(blockHandler = "getConfigBlock") //未生效，原因未知
+    public String updateCustomer(@PathVariable String id) {
+        customerService.updateCustomer(id);
+        return "SUCCESS";
     }
 
     /**

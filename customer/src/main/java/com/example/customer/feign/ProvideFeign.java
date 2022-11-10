@@ -3,7 +3,6 @@ package com.example.customer.feign;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @Author liujiabin
@@ -13,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ProvideFeign {
 
     @GetMapping("/payment/nacos/{id}")
-    public String getPayment(@PathVariable("id") Integer id);
+    String getPayment(@PathVariable("id") Integer id);
 
     @GetMapping("/errorPayment/nacos/{id}")
-    public String getErrorPayment(@PathVariable("id") Integer id);
+    String getErrorPayment(@PathVariable("id") Integer id);
 }

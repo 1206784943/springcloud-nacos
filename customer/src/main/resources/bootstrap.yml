@@ -5,6 +5,11 @@ spring:
     name: customer
   profiles:
     active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
   cloud:
     nacos:
       discovery:
@@ -43,3 +48,29 @@ spring:
 feign:
   sentinel:
     enabled: true #开启openFeign对sentinel的整合
+
+seata:
+  # 这里要特别注意和nacos中配置的要保持一致，建议配置成 ${spring.application.name}-tx-group
+  tx-service-group: ${spring.application.name}-tx-group
+  registry:
+    type: nacos
+    nacos:
+      # 配置所在命名空间ID，如未配置默认public空间
+      server-addr: 127.0.0.1:8848
+      namespace: d173bb29-9a7c-4a01-aedd-056c63440ba8
+      group: SEATA_GROUP
+      application: seata-server
+      userName: nacos
+      password: nacos
+  config:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace: d173bb29-9a7c-4a01-aedd-056c63440ba8
+      group: SEATA_GROUP
+      userName: nacos
+      password: nacos
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.customer.entity
