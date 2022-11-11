@@ -50,6 +50,7 @@ public class CustomerController {
     @SentinelResource(blockHandler = "getConfigBlock") //未生效，原因未知
     public String updateCustomer(@PathVariable String id) {
         customerService.updateCustomer(id);
+        String payment = provideFeign.getErrorPayment(0);
         return "SUCCESS";
     }
 

@@ -51,7 +51,7 @@ feign:
 
 seata:
   # 这里要特别注意和nacos中配置的要保持一致，建议配置成 ${spring.application.name}-tx-group
-  tx-service-group: ${spring.application.name}-tx-group
+  tx-service-group: my_test_tx_group
   registry:
     type: nacos
     nacos:
@@ -70,6 +70,13 @@ seata:
       group: SEATA_GROUP
       userName: nacos
       password: nacos
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
+    disable-global-transaction: false
+  client:
+    rm:
+      report-success-enable: false
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

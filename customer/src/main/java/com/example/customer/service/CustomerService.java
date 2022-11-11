@@ -1,6 +1,7 @@
 package com.example.customer.service;
 
 import com.example.customer.dao.CustomerDao;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,7 +15,8 @@ public class CustomerService {
     @Resource
     private CustomerDao customerDao;
 
+    @GlobalTransactional
     public void updateCustomer(String id) {
-//        customerDao.updateCustomer(id);
+        customerDao.updateCustomer(id);
     }
 }
