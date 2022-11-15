@@ -1,4 +1,4 @@
-package com.example.customer.dao;
+package com.example.provide.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 

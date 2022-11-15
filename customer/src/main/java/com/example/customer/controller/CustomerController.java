@@ -48,9 +48,8 @@ public class CustomerController {
 
     @GetMapping("/updateCustomer/{id}")
     @SentinelResource(blockHandler = "getConfigBlock") //未生效，原因未知
-    public String updateCustomer(@PathVariable String id) {
+    public String updateCustomer(@PathVariable Integer id) {
         customerService.updateCustomer(id);
-        String payment = provideFeign.getErrorPayment(0);
         return "SUCCESS";
     }
 
