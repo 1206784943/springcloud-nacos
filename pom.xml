@@ -8,9 +8,9 @@
         <version>2.3.1.RELEASE</version>
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>spring-cloud-nacos</artifactId>
+    <artifactId>springcloud-nacos</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cloud-nacos</name>
+    <name>springcloud-nacos</name>
     <description>nacos-seata-sentinel</description>
     <modules>
         <module>customer</module>
